@@ -1,5 +1,5 @@
 ## Happy World Soil Day 2022!!
-Inspired by [mtandon09´ggplot Xmas card](https://github.com/mtandon09/ggplot_christmas) I wrote a code for a simple Happy World Soil Day. 
+Inspired by [mtandon09´ggplot Xmas card](https://github.com/mtandon09/ggplot_christmas) I wrote a code for a simple Happy World Soil Day card. 
 
 You can customize:
 
@@ -12,6 +12,12 @@ You can customize:
 Here an example
 
 ![](https://github.com/Saryace/world_soil_day_card/blob/master/soil_card_biophysics.png)
+
+
+Printed ones:
+![](https://github.com/Saryace/world_soil_day_card/blob/master/soil_cards_printed.jpeg)
+
+
 
 
 
