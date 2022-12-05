@@ -11,7 +11,7 @@ You can customize:
 
 Here an example
 
-![](https://github.com/Saryace/world_soil_day_card/blob/master/soil_card_for_biophysics.png)
+![](https://github.com/Saryace/world_soil_day_card/blob/master/soil_card_biophysics.png)
 
 
 
