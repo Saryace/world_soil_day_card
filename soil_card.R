@@ -20,6 +20,8 @@ library(magick)
 
 # Data --------------------------------------------------------------------
 
+# Here you can add your own data
+
 soil_data <- data.frame(
   soil_id = c("A","A", "A","A"),
   limit_above = c(0,10,25,35),
@@ -28,8 +30,9 @@ soil_data <- data.frame(
   munsell = c('5YR 3/2','5YR 7/2', '2.5YR 6/2','10YR 7/2') 
 )
 
-
 # Data wrangling ----------------------------------------------------------
+
+# some data wrangling for adjusting soil depth
 
 soil_data_plot <- soil_data %>% 
   mutate(depth = limit_below - limit_above) %>% 
@@ -37,12 +40,18 @@ soil_data_plot <- soil_data %>%
 
 # add background ----------------------------------------------------------
 
+# here you can add a background image
+
 image_plot <- image_read("soil_keycup.jpeg")
+
+# Here you can customise the opaciticy and color
 
 image_plot <- image_plot %>%
   image_colorize(opacity = 50, color = "grey70")
 
 # Plot --------------------------------------------------------------------
+
+# Let´s plot it
 
 soil_card_plot <-
 ggplot(
@@ -50,32 +59,30 @@ ggplot(
   aes(
     x=soil_id,
     y=-depth,
-    fill=fct_reorder(horizon,
+    fill=fct_reorder(horizon, # soil horizons reordered
                      limit_below,
                      .desc=TRUE))
     ) +
-  annotation_custom(grid::rasterGrob(image_plot
+  annotation_custom(grid::rasterGrob(image_plot # the background
                                      , width = unit(1, "npc")
                                      , height = unit(1, "npc"))) +
 
   geom_col(
-    width=0.3
+    width=0.3 # width column
   ) +
-  geom_text(
+  geom_text( #location of horizon text
     aes(y=-(limit_above + depth/2),label=horizon)
   ) +
   scale_fill_manual( 
     breaks=soil_data_plot$horizons,
     values=soil_data_plot$munsell_hex) +
-  scale_y_continuous(labels = abs) +
-  theme_void()
-
+  theme_void() # remove all plot components
 
 # Save it -----------------------------------------------------------------
 
 soil_card <- 
-soil_card_plot +  
+soil_card_plot +  # add some text
   grid::textGrob('Some really important text about soil',
                  just = "bottom")
-                 
+
 ggsave("soil_card.png",soil_card, height=6, width=9)
